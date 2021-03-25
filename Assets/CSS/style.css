@@ -1,0 +1,51 @@
+#startbtn {
+  border-radius: 12px;
+  padding: 14px 40px;
+  font-size: 24px;
+  background-color: blue;
+  color: orange;
+}
+
+#knicks {
+  border: orangered;
+}
+
+button {
+    border-radius: 12px;
+    padding: 14px 80px;
+    font-size: 24px;
+    background-color: blue;
+    color: orange;
+    height: 100px;
+    margin: auto;
+}
+  
+#questions {
+  margin-top: 100;
+  margin-bottom: 100;
+  font-size: 24px;
+  text-align: center;
+}
+
+body {
+    justify-content: center;
+}
+
+
+#answers {
+    display: flex;
+  flex-direction: row;
+}
+
+.knicksheader {
+    border: blue;
+    text-align: center;
+    background-color: blue;
+    
+}
+
+#timerelement {
+    font-size: 36px;
+    border: 15px blue;
+    text-align: center;
+}

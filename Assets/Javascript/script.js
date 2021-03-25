@@ -2,10 +2,12 @@ var startBtn = document.getElementById("startbtn");
 console.log(startBtn);
 var homepage = document.getElementById("homepage");
 var questionsElement = document.getElementById("questions");
-var secondsLeft = 50;
+var secondsLeft = 20;
 var timeElement = document.getElementById("timerelement");
-var answersEl = document.getElementById("answers")
+var answersEl = document.getElementById("answers");
 var currentQuestion = 0;
+var setInterval;
+ var timerInterval;
 
 startBtn.addEventListener("click", function () {
   homepage.style.display = "none";
@@ -20,39 +22,37 @@ startBtn.addEventListener("click", function () {
 //
 function setTime() {
   var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeElement.textContent = secondsLeft;
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      alert("Times Up");
-    }
+    timeElement.textContent = secondsLeft + " Seconds Left";
+    if (secondsLeft > 0) {
+      secondsLeft--;
+    }  
   }, 1000);
+}
 
- 
-}
-function checkAnswer () {
- 
+function checkAnswer() {
   if (questions[currentQuestion].correctAnswer === this.value) {
-    console.log("correct") 
+    console.log("correct");
+  } else {
+    secondsLeft -= 15;
+    alert("incorrect");
   }
-  else {
-    secondsLeft -= 15
-    alert("incorrect")}
-    currentQuestion++ 
-  displayQuestion()
-  
+  currentQuestion++;
+  displayQuestion();
 }
+
 
 function displayQuestion() {
   answersEl.innerHTML = "";
   questionsElement.textContent = questions[currentQuestion].question;
   var answers = questions[currentQuestion].answers;
+  console.log (questions)
+
   for (var i = 0; i < answers.length; i++) {
     var choice = document.createElement("button");
-    console.log(answers[i])
+    console.log(answers[i]);
     choice.textContent = answers[i];
     choice.value = answers[i];
-    choice.onclick=checkAnswer
+    choice.onclick = checkAnswer;
     answersEl.appendChild(choice);
   }
 }
@@ -123,15 +123,24 @@ var questions = [
     answers: ["Georgia", "Alabama", "Georgetown", "Duke"],
     correctAnswer: "Georgetown",
   },
-  {
-    question:
-      "Which off the court venture did Latrell Spreewell (aka Spreewells) enter that became a hip-hop staple ?",
-    answer: [
-      "Spinner Wheels",
-      "Baggy Clothes",
-      "A Jewlery Store",
-      "an Urban Dictionary ",
-    ],
-    correctAnswer: ["Spinner Wheels"],
-  },
+  // {
+  //   question:
+  //     "Which off the court venture did Latrell Spreewell (aka Spreewells) enter that became a hip-hop staple ?",
+  //   answer: [
+  //     "Spinner Wheels",
+  //     "Baggy Clothes",
+  //     "A Jewlery Store",
+  //     "an Urban Dictionary ",
+  //   ],
+  //   correctAnswer: "Spinner Wheels",
+  // },
+
+  
 ];
+
+// function gameOver () {
+//   questionsElement.setAttribute ("style", "display:none");
+//   timeElement.textContent="";
+// //   clearInterval(timerInterval)
+// }
+
