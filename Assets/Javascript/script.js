@@ -2,7 +2,7 @@ var startBtn = document.getElementById("startbtn");
 console.log(startBtn);
 var homepage = document.getElementById("homepage");
 var questionsElement = document.getElementById("questions");
-var secondsLeft = 20;
+var secondsLeft = 40;
 var timeElement = document.getElementById("timerelement");
 var answersEl = document.getElementById("answers");
 var currentQuestion = 0;
@@ -19,14 +19,24 @@ startBtn.addEventListener("click", function () {
   displayQuestion();
 });
 
-//
 function setTime() {
   var timerInterval = setInterval(function () {
     timeElement.textContent = secondsLeft + " Seconds Left";
     if (secondsLeft > 0) {
       secondsLeft--;
-    }  
+    } else {
+      gameOver();
+    }
   }, 1000);
+  
+}
+function gameOver() {
+  questionsElement.setAttribute("style", "display:none");
+  answersEl.setAttribute("style", "display:none");
+  timeElement.textContent = "";
+  clearInterval(timerInterval);  
+  gameOverEl.classList.remove("hide");
+  
 }
 
 function checkAnswer() {

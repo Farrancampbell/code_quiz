@@ -7,7 +7,7 @@
 }
 
 #knicks {
-  border: orangered;
+ 
 }
 
 button {
@@ -29,8 +29,12 @@ button {
 
 body {
     justify-content: center;
+    
 }
 
+.hide {
+    display: none;
+  }
 
 #answers {
     display: flex;
@@ -41,6 +45,8 @@ body {
     border: blue;
     text-align: center;
     background-color: blue;
+    color: orange;
+    background-image: url(/Assets/CSS/Knicksbackground.png)
     
 }
 
